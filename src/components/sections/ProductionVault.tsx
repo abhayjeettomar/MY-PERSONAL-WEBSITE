@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Play, Filter, Award, ChevronRight, Layers, Eye, ShieldCheck, Film } from 'lucide-react';
+import { Play, Sparkles, Award, Eye, ChevronRight } from 'lucide-react';
 import { MRBEAST_DATA, VideoDossier } from '@/data/mrbeastData';
 
 interface ProductionVaultProps {
   onSelectVideo: (video: VideoDossier) => void;
   playClick?: () => void;
-  playLaser?: () => void;
+  playCash?: () => void;
 }
 
 type FilterCategory = 'ALL' | 'MEGA ARENA' | 'ENDURANCE' | 'HUMANITARIAN';
@@ -13,7 +13,7 @@ type FilterCategory = 'ALL' | 'MEGA ARENA' | 'ENDURANCE' | 'HUMANITARIAN';
 export const ProductionVault: React.FC<ProductionVaultProps> = ({
   onSelectVideo,
   playClick,
-  playLaser,
+  playCash,
 }) => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('ALL');
   const [activeRecordIndex, setActiveRecordIndex] = useState(0);
@@ -31,30 +31,26 @@ export const ProductionVault: React.FC<ProductionVaultProps> = ({
   return (
     <section
       id="vault"
-      className="relative py-24 sm:py-32 bg-obsidian border-b border-border-hairline"
+      className="relative py-28 sm:py-36 bg-[#050608] border-b border-white/10"
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12">
-        {/* Section Header with Category Filter */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-border-hairline">
+        {/* Header & Filter Pills */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
           <div>
-            <div className="flex items-center gap-2 font-mono text-xs text-beast-cyan tracking-[0.2em] uppercase mb-2">
-              <span className="w-2 h-2 bg-beast-cyan" />
-              <span>LVL 03 // THE PRODUCTION VAULT &amp; ARENA MATRIX</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00F5FF]/10 border border-[#00F5FF]/20 text-xs font-bold text-[#00F5FF] uppercase tracking-wider mb-4">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>THE PRODUCTION VAULT</span>
             </div>
-            <h2 className="font-display font-extrabold text-[clamp(2.2rem,5vw,4.5rem)] uppercase tracking-tight text-text-primary">
-              SET SCHEMATICS &amp; <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-beast-cyan via-beast-gold to-beast-magenta">
-                VERIFIED BROADCASTS.
+            <h2 className="font-display font-extrabold text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-tight uppercase text-white">
+              SOUNDSTAGE <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F5FF] via-[#FFD000] to-[#FF1E66]">
+                SPECTACLE.
               </span>
             </h2>
           </div>
 
-          {/* Filter Bar */}
+          {/* Minimal Filter Pills */}
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-text-muted font-mono text-xs hidden sm:flex items-center gap-1 mr-2">
-              <Filter className="w-3.5 h-3.5" />
-              <span>CATEGORY:</span>
-            </span>
             {(['ALL', 'MEGA ARENA', 'ENDURANCE', 'HUMANITARIAN'] as FilterCategory[]).map((cat) => (
               <button
                 key={cat}
@@ -62,10 +58,10 @@ export const ProductionVault: React.FC<ProductionVaultProps> = ({
                   playClick?.();
                   setActiveFilter(cat);
                 }}
-                className={`px-3 py-1.5 font-mono text-xs tracking-wider transition-all cursor-pointer border ${
+                className={`px-4 py-2 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer ${
                   activeFilter === cat
-                    ? 'bg-beast-cyan text-obsidian font-bold border-beast-cyan shadow-[0_0_15px_rgba(0,229,255,0.3)]'
-                    : 'bg-vault text-text-muted border-border-hairline hover:border-text-muted hover:text-text-primary'
+                    ? 'bg-white text-[#07080C] shadow-[0_0_20px_rgba(255,255,255,0.4)]'
+                    : 'bg-white/5 text-slate-400 hover:text-white border border-white/10'
                 }`}
               >
                 {cat}
@@ -74,112 +70,103 @@ export const ProductionVault: React.FC<ProductionVaultProps> = ({
           </div>
         </div>
 
-        {/* Asymmetric 12-Column Bento Screening Matrix */}
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {/* Bento Flagship Card (7 Columns) */}
+        {/* Asymmetric 12-Column Modern Bento Screening Grid */}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Bento Flagship 7-Col Card */}
           {filteredVideos[0] && (
             <div
-              className="lg:col-span-7 vault-card p-6 sm:p-8 flex flex-col justify-between group relative overflow-hidden"
+              className="lg:col-span-7 glass-card p-6 sm:p-8 flex flex-col justify-between group relative overflow-hidden"
               data-cursor="video"
             >
               <div>
-                {/* Card Header Telemetry */}
-                <div className="flex items-center justify-between pb-4 border-b border-border-hairline font-mono text-xs">
-                  <span className="px-2.5 py-0.5 bg-obsidian border border-beast-cyan text-beast-cyan font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                  <span className="px-3 py-1 rounded-full bg-[#00F5FF]/10 text-[#00F5FF] text-xs font-bold uppercase tracking-wider">
                     {filteredVideos[0].category}
                   </span>
-                  <div className="flex items-center gap-2 text-beast-gold font-bold">
-                    <Eye className="w-3.5 h-3.5" />
+                  <div className="flex items-center gap-2 text-[#FFD000] font-bold text-sm">
+                    <Eye className="w-4 h-4" />
                     <span>{filteredVideos[0].views}</span>
                   </div>
                 </div>
 
-                {/* Video Title & Schematics */}
-                <h3 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-tight text-text-primary mt-4 group-hover:text-beast-cyan transition-colors">
+                <h3 className="font-display font-extrabold text-2xl sm:text-4xl uppercase tracking-tight text-white mt-5 group-hover:text-[#00F5FF] transition-colors">
                   {filteredVideos[0].title}
                 </h3>
 
-                <p className="mt-3 text-text-muted text-sm sm:text-base leading-relaxed max-w-2xl">
+                <p className="mt-3 text-slate-300 text-base leading-relaxed max-w-2xl">
                   {filteredVideos[0].editorialNote}
                 </p>
               </div>
 
-              {/* YouTube Thumbnail Preview with Play Overlay */}
+              {/* Video Thumbnail Vessel */}
               <div
                 onClick={() => {
                   playClick?.();
                   onSelectVideo(filteredVideos[0]);
                 }}
-                className="my-6 relative aspect-video w-full bg-obsidian border border-border-hairline overflow-hidden group/thumb cursor-pointer"
+                className="my-6 relative aspect-video w-full rounded-2xl bg-black border border-white/10 overflow-hidden group/thumb cursor-pointer shadow-2xl"
               >
                 <img
                   src={`https://i.ytimg.com/vi/${filteredVideos[0].youtubeId}/maxresdefault.jpg`}
                   alt={filteredVideos[0].title}
-                  className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500 opacity-80"
+                  className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-700 opacity-80"
                   onError={(e) => {
-                    // Fallback to HQ default if maxres is unavailable
                     (e.target as HTMLImageElement).src = `https://i.ytimg.com/vi/${filteredVideos[0].youtubeId}/hqdefault.jpg`;
                   }}
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
-                {/* Center Hover Trigger Disc */}
+                {/* Center Glowing Play Disc */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-beast-gold text-obsidian flex items-center justify-center shadow-[0_0_30px_rgba(255,208,0,0.5)] group-hover/thumb:scale-110 transition-all">
-                    <Play className="w-7 h-7 fill-obsidian ml-1" />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-[#FFD000] to-[#FF9900] text-[#07080C] flex items-center justify-center shadow-[0_0_40px_rgba(255,208,0,0.6)] group-hover/thumb:scale-110 transition-transform">
+                    <Play className="w-7 h-7 fill-[#07080C] ml-1" />
                   </div>
                 </div>
 
-                {/* Bottom Left Schematic Micro-tag */}
-                <div className="absolute bottom-3 left-3 font-mono text-[10px] text-text-primary bg-obsidian/80 px-2.5 py-1 border border-border-hairline">
+                <div className="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-black/70 backdrop-blur-md text-xs font-mono text-white/90">
                   {filteredVideos[0].schematicTag}
                 </div>
               </div>
 
-              {/* Card Bottom Meta */}
-              <div className="pt-4 border-t border-border-hairline flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
-                <div className="text-text-muted">
-                  <span className="text-beast-cyan font-bold">{filteredVideos[0].budgetOrStakes}</span> //{' '}
-                  <span>{filteredVideos[0].contestantsOrParticipants}</span>
-                </div>
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                <span className="text-slate-400 text-xs font-semibold">
+                  {filteredVideos[0].budgetOrStakes} // {filteredVideos[0].contestantsOrParticipants}
+                </span>
 
                 <button
                   onClick={() => {
                     playClick?.();
                     onSelectVideo(filteredVideos[0]);
                   }}
-                  className="btn-chamfer px-4 py-2 bg-beast-gold text-obsidian font-bold hover:bg-beast-cyan transition-colors flex items-center gap-1.5 uppercase cursor-pointer"
+                  className="btn-pill px-5 py-2.5 bg-white text-[#07080C] font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-[#00F5FF] transition-all cursor-pointer shadow-md"
                 >
                   <span>LAUNCH STREAM</span>
-                  <Play className="w-3.5 h-3.5 fill-obsidian" />
+                  <Play className="w-3.5 h-3.5 fill-current" />
                 </button>
               </div>
             </div>
           )}
 
-          {/* Bento Secondary Stacked Card (5 Columns) */}
+          {/* Bento Secondary 5-Col Card */}
           {filteredVideos[1] && (
             <div
-              className="lg:col-span-5 vault-card p-6 sm:p-8 flex flex-col justify-between group relative overflow-hidden"
+              className="lg:col-span-5 glass-card p-6 sm:p-8 flex flex-col justify-between group relative overflow-hidden"
               data-cursor="video"
             >
               <div>
-                <div className="flex items-center justify-between pb-4 border-b border-border-hairline font-mono text-xs">
-                  <span className="px-2.5 py-0.5 bg-obsidian border border-beast-magenta text-beast-magenta font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                  <span className="px-3 py-1 rounded-full bg-[#FF1E66]/10 text-[#FF1E66] text-xs font-bold uppercase tracking-wider">
                     {filteredVideos[1].category}
                   </span>
-                  <div className="text-beast-gold font-bold flex items-center gap-1.5">
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>{filteredVideos[1].views}</span>
-                  </div>
+                  <span className="text-[#FFD000] font-bold text-sm">{filteredVideos[1].views}</span>
                 </div>
 
-                <h3 className="font-display font-extrabold text-2xl uppercase tracking-tight text-text-primary mt-4 group-hover:text-beast-cyan transition-colors">
+                <h3 className="font-display font-extrabold text-2xl sm:text-3xl uppercase tracking-tight text-white mt-5 group-hover:text-[#00F5FF] transition-colors">
                   {filteredVideos[1].title}
                 </h3>
 
-                <p className="mt-3 text-text-muted text-sm leading-relaxed">
+                <p className="mt-3 text-slate-300 text-sm leading-relaxed">
                   {filteredVideos[1].editorialNote}
                 </p>
               </div>
@@ -189,196 +176,187 @@ export const ProductionVault: React.FC<ProductionVaultProps> = ({
                   playClick?.();
                   onSelectVideo(filteredVideos[1]);
                 }}
-                className="my-5 relative aspect-video w-full bg-obsidian border border-border-hairline overflow-hidden cursor-pointer group/thumb"
+                className="my-5 relative aspect-video w-full rounded-2xl bg-black border border-white/10 overflow-hidden cursor-pointer group/thumb shadow-xl"
               >
                 <img
                   src={`https://i.ytimg.com/vi/${filteredVideos[1].youtubeId}/maxresdefault.jpg`}
                   alt={filteredVideos[1].title}
-                  className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500 opacity-80"
+                  className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-700 opacity-80"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = `https://i.ytimg.com/vi/${filteredVideos[1].youtubeId}/hqdefault.jpg`;
                   }}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-beast-cyan text-obsidian flex items-center justify-center shadow-[0_0_20px_rgba(0,229,255,0.4)] group-hover/thumb:scale-110 transition-all">
-                    <Play className="w-5 h-5 fill-obsidian ml-1" />
+                  <div className="w-14 h-14 rounded-full bg-[#00F5FF] text-[#07080C] flex items-center justify-center shadow-[0_0_30px_rgba(0,245,255,0.5)] group-hover/thumb:scale-110 transition-transform">
+                    <Play className="w-5 h-5 fill-current ml-0.5" />
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-border-hairline flex items-center justify-between font-mono text-xs">
-                <span className="text-text-muted">{filteredVideos[1].budgetOrStakes}</span>
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold">
+                <span className="text-slate-400">{filteredVideos[1].budgetOrStakes}</span>
                 <button
                   onClick={() => {
                     playClick?.();
                     onSelectVideo(filteredVideos[1]);
                   }}
-                  className="text-beast-cyan hover:text-beast-gold font-bold flex items-center gap-1 transition-colors cursor-pointer uppercase"
+                  className="text-[#FFD000] hover:text-white font-bold transition-colors cursor-pointer"
                 >
-                  <span>WATCH [▶]</span>
+                  PLAY ▶
                 </button>
               </div>
             </div>
           )}
 
-          {/* Bento Lower Left Card (5 Columns) */}
+          {/* Lower 5-Col Card */}
           {filteredVideos[2] && (
             <div
-              className="lg:col-span-5 vault-card p-6 sm:p-7 flex flex-col justify-between group"
+              className="lg:col-span-5 glass-card p-6 sm:p-7 flex flex-col justify-between group"
               data-cursor="video"
             >
               <div>
-                <div className="flex items-center justify-between pb-3 border-b border-border-hairline font-mono text-xs">
-                  <span className="px-2 py-0.5 bg-obsidian border border-beast-cyan text-beast-cyan text-[11px] font-bold uppercase">
-                    {filteredVideos[2].category}
-                  </span>
-                  <span className="text-beast-gold font-bold text-xs">{filteredVideos[2].views}</span>
+                <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                  <span className="text-xs font-bold text-[#00F5FF]">{filteredVideos[2].category}</span>
+                  <span className="text-xs font-bold text-[#FFD000]">{filteredVideos[2].views}</span>
                 </div>
-                <h4 className="font-display font-bold text-xl uppercase tracking-tight text-text-primary mt-3 group-hover:text-beast-cyan transition-colors">
+                <h4 className="font-display font-extrabold text-2xl uppercase tracking-tight text-white mt-4 group-hover:text-[#00F5FF] transition-colors">
                   {filteredVideos[2].title}
                 </h4>
-                <p className="mt-2 text-text-muted text-xs sm:text-sm leading-relaxed">
+                <p className="mt-2 text-slate-300 text-sm leading-relaxed">
                   {filteredVideos[2].editorialNote}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-border-hairline flex items-center justify-between font-mono text-xs">
-                <span className="text-text-muted text-[11px]">{filteredVideos[2].budgetOrStakes}</span>
+              <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+                <span className="text-slate-400 font-semibold">{filteredVideos[2].budgetOrStakes}</span>
                 <button
                   onClick={() => {
                     playClick?.();
                     onSelectVideo(filteredVideos[2]);
                   }}
-                  className="text-beast-gold hover:text-beast-cyan font-bold text-xs uppercase cursor-pointer"
+                  className="text-white hover:text-[#00F5FF] font-bold cursor-pointer"
                 >
-                  PLAY DOSSIER ↗
+                  PLAY VIDEO ↗
                 </button>
               </div>
             </div>
           )}
 
-          {/* Bento Lower Right Card (7 Columns) */}
+          {/* Lower 7-Col Card */}
           {filteredVideos[3] && (
             <div
-              className="lg:col-span-7 vault-card p-6 sm:p-7 flex flex-col justify-between group"
+              className="lg:col-span-7 glass-card p-6 sm:p-7 flex flex-col justify-between group"
               data-cursor="video"
             >
               <div>
-                <div className="flex items-center justify-between pb-3 border-b border-border-hairline font-mono text-xs">
-                  <span className="px-2 py-0.5 bg-obsidian border border-beast-emerald text-beast-emerald text-[11px] font-bold uppercase">
-                    {filteredVideos[3].category}
-                  </span>
-                  <span className="text-beast-gold font-bold text-xs">{filteredVideos[3].views}</span>
+                <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                  <span className="text-xs font-bold text-[#00F076]">{filteredVideos[3].category}</span>
+                  <span className="text-xs font-bold text-[#FFD000]">{filteredVideos[3].views}</span>
                 </div>
-                <h4 className="font-display font-bold text-xl sm:text-2xl uppercase tracking-tight text-text-primary mt-3 group-hover:text-beast-emerald transition-colors">
+                <h4 className="font-display font-extrabold text-2xl sm:text-3xl uppercase tracking-tight text-white mt-4 group-hover:text-[#00F076] transition-colors">
                   {filteredVideos[3].title}
                 </h4>
-                <p className="mt-2 text-text-muted text-xs sm:text-sm leading-relaxed">
+                <p className="mt-2 text-slate-300 text-sm leading-relaxed">
                   {filteredVideos[3].editorialNote}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-border-hairline flex items-center justify-between font-mono text-xs">
-                <span className="text-beast-emerald font-semibold text-[11px]">
-                  {filteredVideos[3].budgetOrStakes}
-                </span>
+              <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+                <span className="text-[#00F076] font-semibold">{filteredVideos[3].budgetOrStakes}</span>
                 <button
                   onClick={() => {
                     playClick?.();
                     onSelectVideo(filteredVideos[3]);
                   }}
-                  className="btn-chamfer px-3 py-1.5 bg-vault border border-border-hairline hover:border-beast-emerald text-text-primary text-xs uppercase cursor-pointer"
+                  className="btn-pill px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-bold transition-all cursor-pointer"
                 >
-                  INSPECT INTERVENTION ▶
+                  WATCH INTERVENTION ▶
                 </button>
               </div>
             </div>
           )}
         </div>
 
-        {/* Amazon Prime Special Dossier: "BEAST GAMES" (44 Guinness World Records) */}
-        <div className="mt-16 p-6 sm:p-10 bg-vault border-2 border-beast-gold/40 crosshair-corner relative">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-border-hairline">
+        {/* Beast Games Amazon Prime 44 Guinness Records Explorer */}
+        <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-white/[0.07] via-white/[0.02] to-transparent border border-white/15 relative overflow-hidden shadow-2xl">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-8 border-b border-white/10">
             <div>
-              <div className="flex items-center gap-2 font-mono text-xs text-beast-gold uppercase tracking-widest font-bold">
-                <Award className="w-4 h-4 text-beast-gold" />
-                <span>AMAZON PRIME BROADCAST TELEMETRY // 44 GUINNESS WORLD RECORDS</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFD000]/10 border border-[#FFD000]/20 text-xs font-bold text-[#FFD000] uppercase tracking-wider mb-3">
+                <Award className="w-4 h-4 text-[#FFD000]" />
+                <span>AMAZON PRIME VIDEO // 44 GUINNESS WORLD RECORDS</span>
               </div>
-              <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-text-primary uppercase tracking-tight mt-1">
+              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-white uppercase tracking-tight">
                 BEAST GAMES: THE $100M BENCHMARK.
               </h3>
-              <p className="mt-2 text-text-muted text-sm max-w-3xl leading-relaxed">
-                Adjudicated in Las Vegas (&quot;Beast City&quot;) and Toronto (&quot;Beast Island&quot;). Donaldson shattered 44 official
-                Guinness World Records in a single television season, proving streaming reality television can match the scale of an Olympic broadcast.
+              <p className="mt-3 text-slate-300 text-base max-w-3xl leading-relaxed">
+                Adjudicated in Las Vegas (&quot;Beast City&quot;) and Toronto (&quot;Beast Island&quot;). Donaldson proved reality television streaming can out-scale Olympic broadcasts in concurrent cameras and participant volume.
               </p>
             </div>
 
-            <div className="p-4 bg-obsidian border border-beast-gold/50 flex-shrink-0 text-center">
-              <div className="font-mono text-[10px] text-text-muted uppercase">TOTAL CASH ON SET</div>
-              <div className="font-mono font-extrabold text-2xl sm:text-3xl text-beast-gold tabular-nums">
+            <div className="p-6 rounded-2xl bg-gradient-to-tr from-[#FFD000]/20 to-transparent border border-[#FFD000]/30 text-center flex-shrink-0">
+              <span className="text-xs text-slate-300 font-bold uppercase">Single Cash Pile</span>
+              <div className="font-display font-black text-4xl text-[#FFD000] mt-1 tabular-nums">
                 $5,000,000
               </div>
-              <div className="text-[9px] font-mono text-beast-cyan mt-0.5">PHYSICAL CASH PYRAMID</div>
+              <span className="text-xs text-[#00F5FF] font-semibold">Physical Cash Pyramid</span>
             </div>
           </div>
 
-          {/* Interactive Record Explorer Widget */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-            {/* Left Record Navigation */}
+          {/* Interactive Record Selector Matrix */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            {/* List */}
             <div className="md:col-span-5 space-y-2">
-              <span className="font-mono text-[11px] text-text-muted uppercase tracking-wider block mb-2">
-                SELECT VERIFIED RECORD:
+              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-3">
+                SELECT RECORD:
               </span>
               {records.map((rec, i) => (
                 <button
                   key={rec.id}
                   onClick={() => {
-                    playLaser?.();
+                    playClick?.();
+                    playCash?.();
                     setActiveRecordIndex(i);
                   }}
-                  className={`w-full p-3 font-mono text-left text-xs transition-all border flex items-center justify-between cursor-pointer ${
+                  className={`w-full p-4 rounded-xl text-left text-sm transition-all flex items-center justify-between cursor-pointer ${
                     activeRecordIndex === i
-                      ? 'border-beast-gold bg-beast-gold/10 text-beast-gold font-bold'
-                      : 'border-border-hairline bg-obsidian/60 text-text-muted hover:text-text-primary hover:border-text-muted'
+                      ? 'bg-gradient-to-r from-[#FFD000] to-[#FF9900] text-[#07080C] font-bold shadow-[0_0_20px_rgba(255,208,0,0.3)]'
+                      : 'bg-white/5 text-slate-300 hover:bg-white/10 border border-white/5'
                   }`}
                 >
-                  <div className="flex items-center gap-2 truncate">
-                    <span className="text-[10px] opacity-60">#{String(i + 1).padStart(2, '0')}</span>
+                  <div className="flex items-center gap-3 truncate">
+                    <span className="text-xs opacity-70">#{i + 1}</span>
                     <span className="truncate">{rec.title}</span>
                   </div>
-                  <ChevronRight className="w-3.5 h-3.5 flex-shrink-0" />
+                  <ChevronRight className="w-4 h-4 flex-shrink-0" />
                 </button>
               ))}
             </div>
 
-            {/* Right Active Record Display Card */}
-            <div className="md:col-span-7 p-6 sm:p-8 bg-obsidian border border-border-hairline flex flex-col justify-between min-h-[220px]">
+            {/* Selected Card */}
+            <div className="md:col-span-7 p-8 rounded-2xl bg-black/60 border border-white/10 flex flex-col justify-between min-h-[250px]">
               <div>
-                <div className="flex items-center justify-between font-mono text-xs text-text-muted border-b border-border-hairline pb-3">
-                  <span className="text-beast-gold font-bold">{activeRecord.officialCitation}</span>
+                <div className="flex items-center justify-between text-xs text-slate-400 border-b border-white/10 pb-3">
+                  <span className="text-[#FFD000] font-bold">{activeRecord.officialCitation}</span>
                   <span>{activeRecord.location}</span>
                 </div>
 
-                <div className="mt-4">
-                  <div className="font-mono text-xs text-beast-cyan uppercase tracking-wider font-semibold">
+                <div className="mt-6">
+                  <span className="text-xs font-mono text-[#00F5FF] uppercase font-bold tracking-wider">
                     {activeRecord.verifiedFigure}
-                  </div>
-                  <div className="font-display font-extrabold text-3xl sm:text-5xl text-text-primary uppercase tracking-tight mt-1 text-beast-gold">
+                  </span>
+                  <div className="font-display font-black text-4xl sm:text-6xl text-[#FFD000] tracking-tight mt-1">
                     {activeRecord.metric}
                   </div>
                 </div>
 
-                <h4 className="mt-3 font-display font-bold text-lg text-text-primary uppercase">
+                <h4 className="mt-3 font-display font-bold text-xl text-white uppercase">
                   {activeRecord.title}
                 </h4>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-border-hairline flex items-center justify-between font-mono text-[11px] text-text-muted">
-                <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-beast-emerald" />
-                  <span>GUINNESS WORLD RECORDS ADJUDICATED</span>
-                </span>
-                <span className="text-beast-cyan">[RECORD 0{activeRecordIndex + 1}/05]</span>
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+                <span>OFFICIAL GUINNESS ADJUDICATION</span>
+                <span className="text-[#00F5FF]">RECORD {activeRecordIndex + 1} / 5</span>
               </div>
             </div>
           </div>

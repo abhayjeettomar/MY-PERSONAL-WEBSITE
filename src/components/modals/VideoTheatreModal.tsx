@@ -36,22 +36,19 @@ export const VideoTheatreModal: React.FC<VideoTheatreModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="theatre-title"
-      className="fixed inset-0 z-[9990] flex items-center justify-center p-3 sm:p-6 md:p-10 bg-obsidian/90 backdrop-blur-xl animate-in fade-in duration-200"
+      className="fixed inset-0 z-[9990] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-2xl animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-5xl bg-vault border border-border-hairline shadow-[0_0_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col max-h-[92vh]"
+        className="relative w-full max-w-5xl rounded-3xl bg-[#0B0E14] border border-white/15 shadow-[0_25px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Control Bar */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-border-hairline bg-obsidian/60">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/[0.02]">
           <div className="flex items-center gap-3">
-            <span className="w-2 h-2 bg-beast-magenta animate-ping" />
-            <span className="font-mono text-xs font-bold text-beast-cyan tracking-wider uppercase">
-              OFFICIAL BROADCAST STREAM // {video.category}
-            </span>
-            <span className="hidden sm:inline font-mono text-[10px] text-text-muted">
-              YT_ID: {video.youtubeId}
+            <span className="w-2.5 h-2.5 rounded-full bg-[#00F5FF] animate-pulse" />
+            <span className="text-xs font-bold text-white tracking-wider uppercase font-mono">
+              OFFICIAL BROADCAST // {video.category}
             </span>
           </div>
 
@@ -60,7 +57,7 @@ export const VideoTheatreModal: React.FC<VideoTheatreModalProps> = ({
               href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 font-mono text-[11px] text-text-muted hover:text-beast-gold transition-colors"
+              className="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-[#FFD000] transition-colors"
             >
               <span>OPEN ON YOUTUBE</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -70,10 +67,10 @@ export const VideoTheatreModal: React.FC<VideoTheatreModalProps> = ({
                 playClick?.();
                 onClose();
               }}
-              className="p-1.5 text-text-muted hover:text-text-primary hover:bg-border-hairline transition-colors cursor-pointer"
-              aria-label="Close theatre modal"
+              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Close modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -90,59 +87,57 @@ export const VideoTheatreModal: React.FC<VideoTheatreModalProps> = ({
         </div>
 
         {/* Production Telemetry Log Footer */}
-        <div className="p-4 sm:p-6 overflow-y-auto bg-obsidian/40 border-t border-border-hairline">
-          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
+        <div className="p-6 overflow-y-auto bg-black/40 border-t border-white/10 space-y-4">
+          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
             <div className="max-w-2xl">
-              <h2 id="theatre-title" className="font-display font-extrabold text-xl sm:text-2xl text-text-primary uppercase tracking-tight">
+              <h2 id="theatre-title" className="font-display font-extrabold text-2xl sm:text-3xl text-white uppercase tracking-tight">
                 {video.title}
               </h2>
-              <p className="mt-2 text-text-muted text-sm sm:text-base leading-relaxed">
+              <p className="mt-2 text-slate-300 text-sm sm:text-base leading-relaxed">
                 {video.editorialNote}
               </p>
             </div>
 
-            {/* Telemetry Badges Matrix */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 min-w-[280px]">
-              <div className="p-2.5 bg-vault border border-border-hairline">
-                <div className="flex items-center gap-1.5 text-beast-gold font-mono text-[10px] uppercase">
-                  <Film className="w-3 h-3" />
-                  <span>VIEWS (OCT 2026)</span>
+            {/* Badges Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 min-w-[280px]">
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                <div className="flex items-center gap-1.5 text-[#FFD000] text-[11px] font-bold uppercase">
+                  <Film className="w-3.5 h-3.5" />
+                  <span>VIEWS</span>
                 </div>
-                <div className="font-mono font-bold text-sm text-text-primary mt-1">
+                <div className="font-display font-bold text-sm text-white mt-1">
                   {video.views}
                 </div>
               </div>
 
-              <div className="p-2.5 bg-vault border border-border-hairline">
-                <div className="flex items-center gap-1.5 text-beast-cyan font-mono text-[10px] uppercase">
-                  <Award className="w-3 h-3" />
-                  <span>BUDGET / STAKES</span>
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                <div className="flex items-center gap-1.5 text-[#00F5FF] text-[11px] font-bold uppercase">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>BUDGET</span>
                 </div>
-                <div className="font-mono font-bold text-xs text-text-primary mt-1 truncate">
+                <div className="font-display font-bold text-xs text-white mt-1 truncate">
                   {video.budgetOrStakes}
                 </div>
               </div>
 
-              <div className="p-2.5 bg-vault border border-border-hairline col-span-2 sm:col-span-1">
-                <div className="flex items-center gap-1.5 text-beast-magenta font-mono text-[10px] uppercase">
-                  <Users className="w-3 h-3" />
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10 col-span-2 sm:col-span-1">
+                <div className="flex items-center gap-1.5 text-[#FF1E66] text-[11px] font-bold uppercase">
+                  <Users className="w-3.5 h-3.5" />
                   <span>SCALE</span>
                 </div>
-                <div className="font-mono font-bold text-xs text-text-primary mt-1 truncate">
+                <div className="font-display font-bold text-xs text-white mt-1 truncate">
                   {video.contestantsOrParticipants}
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-border-hairline flex flex-wrap items-center justify-between text-[11px] font-mono text-text-muted gap-2">
+          <div className="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-3.5 h-3.5 text-beast-cyan" />
-              <span>VERIFIED AS OF: {video.asOfDate}</span>
-              <span className="opacity-40">|</span>
-              <span>SOURCE: {video.source}</span>
+              <ShieldCheck className="w-4 h-4 text-[#00F076]" />
+              <span>VERIFIED OCT 2026 // {video.source}</span>
             </div>
-            <div className="text-[10px] text-text-muted/60">
+            <div className="font-mono text-slate-500">
               {video.schematicTag}
             </div>
           </div>

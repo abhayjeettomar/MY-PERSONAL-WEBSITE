@@ -23,10 +23,10 @@ export function App() {
   const [activeVideo, setActiveVideo] = useState<VideoDossier | null>(null);
   const [sourcesModalOpen, setSourcesModalOpen] = useState(false);
   const [currentLevel, setCurrentLevel] = useState(0);
-  const [currentLevelName, setCurrentLevelName] = useState('ARENA STAGE');
+  const [currentLevelName, setCurrentLevelName] = useState('Arena');
 
   const reducedMotion = useReducedMotion();
-  const { playClick, playHover, playBreach, playMilestone, playLaser } = useSoundFX(sfxEnabled);
+  const { playClick, playHover, playCash, playBreach, playMilestone } = useSoundFX(sfxEnabled);
   const { scrollProgress, velocity, scrollTo } = useSmoothScroll(!reducedMotion && preloaderComplete);
 
   // Section level detection via IntersectionObserver
@@ -34,13 +34,13 @@ export function App() {
     if (!preloaderComplete) return;
 
     const sectionMap = [
-      { id: 'arena', level: 0, name: 'ARENA STAGE' },
-      { id: 'origin', level: 1, name: 'THE BEDROOM LAB' },
-      { id: 'timeline', level: 2, name: '500M TIMELINE' },
-      { id: 'vault', level: 3, name: 'PRODUCTION VAULT' },
-      { id: 'empire', level: 4, name: 'EMPIRE DECK' },
-      { id: 'impact', level: 5, name: 'PHILANTHROPY' },
-      { id: 'telemetry', level: 6, name: 'BY THE NUMBERS' },
+      { id: 'arena', level: 0, name: 'Arena' },
+      { id: 'origin', level: 1, name: 'Origin' },
+      { id: 'timeline', level: 2, name: '500M' },
+      { id: 'vault', level: 3, name: 'Productions' },
+      { id: 'empire', level: 4, name: 'Empire' },
+      { id: 'impact', level: 5, name: 'Impact' },
+      { id: 'telemetry', level: 6, name: 'Data' },
     ];
 
     const observer = new IntersectionObserver(
@@ -68,13 +68,13 @@ export function App() {
 
   const handleNavigate = useCallback(
     (target: string) => {
-      scrollTo(target, { offset: -56 });
+      scrollTo(target, { offset: -70 });
     },
     [scrollTo]
   );
 
   return (
-    <div className="min-h-screen bg-obsidian text-text-primary selection:bg-beast-cyan selection:text-obsidian relative">
+    <div className="min-h-screen bg-[#050608] text-white selection:bg-[#00F5FF] selection:text-[#07080C] relative">
       {/* Preloader Countdown (Runs once per session unless skipped) */}
       {!preloaderComplete && (
         <Preloader
@@ -88,7 +88,7 @@ export function App() {
       {/* Custom Context-Aware Desktop Reticle Cursor */}
       <CustomCursor />
 
-      {/* Persistent Broadcast HUD */}
+      {/* Floating Island HUD */}
       <BroadcastHUD
         currentLevel={currentLevel}
         currentLevelName={currentLevelName}
@@ -99,6 +99,7 @@ export function App() {
         onOpenSources={() => setSourcesModalOpen(true)}
         onNavigate={handleNavigate}
         playClick={playClick}
+        playCash={playCash}
       />
 
       {/* Main Single-Page Journey */}
@@ -108,6 +109,7 @@ export function App() {
           onEnterVault={() => handleNavigate('#origin')}
           onPlayShowreel={(v) => setActiveVideo(v)}
           playClick={playClick}
+          playCash={playCash}
           playBreach={playBreach}
           reducedMotion={reducedMotion}
         />
@@ -122,20 +124,20 @@ export function App() {
         <ProductionVault
           onSelectVideo={(v) => setActiveVideo(v)}
           playClick={playClick}
-          playLaser={playLaser}
+          playCash={playCash}
         />
 
         {/* Level 04: Beast Industries Ecosystem */}
-        <EmpireEcosystem playClick={playClick} playLaser={playLaser} />
+        <EmpireEcosystem playClick={playClick} playCash={playCash} />
 
         {/* Level 05: Philanthropy & World Impact */}
-        <PhilanthropyImpact playClick={playClick} playLaser={playLaser} />
+        <PhilanthropyImpact playClick={playClick} playCash={playCash} />
 
         {/* Level 06: Telemetry Simulator */}
         <TelemetrySimulator
           onOpenSources={() => setSourcesModalOpen(true)}
           playClick={playClick}
-          playLaser={playLaser}
+          playCash={playCash}
         />
       </main>
 
