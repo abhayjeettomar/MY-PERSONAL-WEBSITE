@@ -4,12 +4,10 @@ import { MRBEAST_DATA } from '@/data/mrbeastData';
 
 interface PhilanthropyImpactProps {
   playClick?: () => void;
-  playCash?: () => void;
 }
 
 export const PhilanthropyImpact: React.FC<PhilanthropyImpactProps> = ({
   playClick,
-  playCash,
 }) => {
   const [selectedInitiativeId, setSelectedInitiativeId] = useState<string>('team-trees');
 
@@ -78,7 +76,6 @@ export const PhilanthropyImpact: React.FC<PhilanthropyImpactProps> = ({
                 key={init.id}
                 onClick={() => {
                   playClick?.();
-                  playCash?.();
                   setSelectedInitiativeId(init.id);
                 }}
                 className={`p-6 rounded-2xl text-left transition-all border cursor-pointer ${

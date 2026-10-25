@@ -2,7 +2,6 @@ import React, { useRef, useState, useMemo, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Float } from '@react-three/drei';
 import * as THREE from 'three';
-import { fireCashCannon } from '@/components/ui/CashCannon';
 
 interface PrizeVaultCanvasProps {
   onBreach?: () => void;
@@ -75,7 +74,6 @@ function ModernVaultScene({ onBreach }: { onBreach?: () => void }) {
 
   const handleClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
-    fireCashCannon();
     onBreach?.();
   };
 

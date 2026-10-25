@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Preloader } from '@/components/layout/Preloader';
 import { BroadcastHUD } from '@/components/layout/BroadcastHUD';
 import { CustomCursor } from '@/components/layout/CustomCursor';
+import { BeastAttentionEngine } from '@/components/three/BeastAttentionEngine';
 import { HeroArena } from '@/components/sections/HeroArena';
 import { OriginStory } from '@/components/sections/OriginStory';
 import { MilestoneTimeline } from '@/components/sections/MilestoneTimeline';
@@ -23,18 +24,18 @@ export function App() {
   const [activeVideo, setActiveVideo] = useState<VideoDossier | null>(null);
   const [sourcesModalOpen, setSourcesModalOpen] = useState(false);
   const [currentLevel, setCurrentLevel] = useState(0);
-  const [currentLevelName, setCurrentLevelName] = useState('Arena');
+  const [currentLevelName, setCurrentLevelName] = useState('Overview');
 
   const reducedMotion = useReducedMotion();
-  const { playClick, playHover, playCash, playBreach, playMilestone } = useSoundFX(sfxEnabled);
-  const { scrollProgress, velocity, scrollTo } = useSmoothScroll(!reducedMotion && preloaderComplete);
+  const { playClick, playHover, playBreach, playMilestone } = useSoundFX(sfxEnabled);
+  const { scrollProgress, scrollTo } = useSmoothScroll(!reducedMotion && preloaderComplete);
 
-  // Section level detection via IntersectionObserver
+  // Smooth Intersection Observer for Chapter detection
   useEffect(() => {
     if (!preloaderComplete) return;
 
     const sectionMap = [
-      { id: 'arena', level: 0, name: 'Arena' },
+      { id: 'arena', level: 0, name: 'Overview' },
       { id: 'origin', level: 1, name: 'Origin' },
       { id: 'timeline', level: 2, name: '500M' },
       { id: 'vault', level: 3, name: 'Productions' },
@@ -74,7 +75,7 @@ export function App() {
   );
 
   return (
-    <div className="min-h-screen bg-[#050608] text-white selection:bg-[#00F5FF] selection:text-[#07080C] relative">
+    <div className="min-h-screen bg-[#06080C] text-white selection:bg-[#00E5FF] selection:text-[#06080C] relative">
       {/* Preloader Countdown (Runs once per session unless skipped) */}
       {!preloaderComplete && (
         <Preloader
@@ -85,6 +86,9 @@ export function App() {
         />
       )}
 
+      {/* Persistent 3D Deconstructible Beast Attention Engine */}
+      <BeastAttentionEngine scrollProgress={scrollProgress} reducedMotion={reducedMotion} />
+
       {/* Custom Context-Aware Desktop Reticle Cursor */}
       <CustomCursor />
 
@@ -93,51 +97,44 @@ export function App() {
         currentLevel={currentLevel}
         currentLevelName={currentLevelName}
         scrollProgress={scrollProgress}
-        scrollVelocity={velocity}
         sfxEnabled={sfxEnabled}
         onToggleSFX={() => setSfxEnabled(!sfxEnabled)}
         onOpenSources={() => setSourcesModalOpen(true)}
         onNavigate={handleNavigate}
         playClick={playClick}
-        playCash={playCash}
       />
 
       {/* Main Single-Page Journey */}
       <main className="relative z-10">
-        {/* Level 00: Hero Arena */}
+        {/* Act 01: Hero Arena */}
         <HeroArena
           onEnterVault={() => handleNavigate('#origin')}
           onPlayShowreel={(v) => setActiveVideo(v)}
           playClick={playClick}
-          playCash={playCash}
-          playBreach={playBreach}
-          reducedMotion={reducedMotion}
         />
 
-        {/* Level 01: Origin Story (2012-2017) */}
+        {/* Act 02: Origin Story (2012-2017) */}
         <OriginStory playClick={playClick} />
 
-        {/* Level 02: Milestone Timeline (2012-2026) */}
+        {/* Act 03: Milestone Timeline (2012-2026) */}
         <MilestoneTimeline playClick={playClick} playMilestone={playMilestone} />
 
-        {/* Level 03: Production Vault & Guinness Records */}
+        {/* Act 04: Production Vault & Guinness Records */}
         <ProductionVault
           onSelectVideo={(v) => setActiveVideo(v)}
           playClick={playClick}
-          playCash={playCash}
         />
 
-        {/* Level 04: Beast Industries Ecosystem */}
-        <EmpireEcosystem playClick={playClick} playCash={playCash} />
+        {/* Act 05: Beast Industries Ecosystem */}
+        <EmpireEcosystem playClick={playClick} />
 
-        {/* Level 05: Philanthropy & World Impact */}
-        <PhilanthropyImpact playClick={playClick} playCash={playCash} />
+        {/* Act 06: Philanthropy & World Impact */}
+        <PhilanthropyImpact playClick={playClick} />
 
-        {/* Level 06: Telemetry Simulator */}
+        {/* Act 07: Telemetry Simulator */}
         <TelemetrySimulator
           onOpenSources={() => setSourcesModalOpen(true)}
           playClick={playClick}
-          playCash={playCash}
         />
       </main>
 

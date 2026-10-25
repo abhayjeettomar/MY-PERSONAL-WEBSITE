@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { Scale, Sparkles, Database, Sliders, Flame } from 'lucide-react';
 import { MRBEAST_DATA } from '@/data/mrbeastData';
-import { fireCashCannon } from '@/components/ui/CashCannon';
 
 interface TelemetrySimulatorProps {
   onOpenSources: () => void;
   playClick?: () => void;
-  playCash?: () => void;
 }
 
 export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
   onOpenSources,
   playClick,
-  playCash,
 }) => {
   const [selectedComparisonId, setSelectedComparisonId] = useState<string>('superbowl');
   const [simulatedSubs, setSimulatedSubs] = useState<number>(523); // in millions
@@ -62,10 +59,7 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = Number(e.target.value);
     setSimulatedSubs(val);
-    if (val === 523) {
-      playCash?.();
-      fireCashCannon();
-    }
+    playClick?.();
   };
 
   return (

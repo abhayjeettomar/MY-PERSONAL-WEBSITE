@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { Sparkles, FastForward } from 'lucide-react';
-import { fireCashCannon } from '@/components/ui/CashCannon';
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -27,7 +26,6 @@ export const Preloader: React.FC<PreloaderProps> = ({
     if (isDone) return;
     setIsDone(true);
     playBreach?.();
-    fireCashCannon();
 
     const tl = gsap.timeline({
       onComplete: () => {

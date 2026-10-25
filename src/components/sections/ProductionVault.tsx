@@ -5,7 +5,6 @@ import { MRBEAST_DATA, VideoDossier } from '@/data/mrbeastData';
 interface ProductionVaultProps {
   onSelectVideo: (video: VideoDossier) => void;
   playClick?: () => void;
-  playCash?: () => void;
 }
 
 type FilterCategory = 'ALL' | 'MEGA ARENA' | 'ENDURANCE' | 'HUMANITARIAN';
@@ -13,7 +12,6 @@ type FilterCategory = 'ALL' | 'MEGA ARENA' | 'ENDURANCE' | 'HUMANITARIAN';
 export const ProductionVault: React.FC<ProductionVaultProps> = ({
   onSelectVideo,
   playClick,
-  playCash,
 }) => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('ALL');
   const [activeRecordIndex, setActiveRecordIndex] = useState(0);
@@ -314,7 +312,6 @@ export const ProductionVault: React.FC<ProductionVaultProps> = ({
                   key={rec.id}
                   onClick={() => {
                     playClick?.();
-                    playCash?.();
                     setActiveRecordIndex(i);
                   }}
                   className={`w-full p-4 rounded-xl text-left text-sm transition-all flex items-center justify-between cursor-pointer ${

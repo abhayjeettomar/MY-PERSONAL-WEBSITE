@@ -3,49 +3,33 @@
 @tailwind utilities;
 
 :root {
-  /* Ultra-Luxurious Modern Dark Palette */
-  --bg-obsidian: #050608;
-  --bg-surface: #0B0E14;
-  --bg-glass: rgba(15, 18, 25, 0.65);
-  --bg-glass-card: rgba(20, 24, 35, 0.5);
-  --beast-cyan: #00F5FF;
+  /* Official MrBeast Panther Brand DNA */
+  --beast-blue: #00E5FF;
+  --beast-pink: #FF1E66;
   --beast-gold: #FFD000;
-  --beast-magenta: #FF1E66;
   --beast-emerald: #00F076;
-  --beast-blue: #0088FF;
-  --text-primary: #FFFFFF;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  --bg-obsidian: #06080C;
+  --bg-surface: #0C0F17;
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 245, 255, 0.3);
-  
+
   --font-display: 'Syne', sans-serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
 [data-theme="light"] {
-  --bg-obsidian: #F8FAFC;
+  --bg-obsidian: #F6F8FC;
   --bg-surface: #FFFFFF;
-  --bg-glass: rgba(255, 255, 255, 0.85);
-  --bg-glass-card: rgba(255, 255, 255, 0.9);
-  --beast-cyan: #0099FF;
-  --beast-gold: #D97706;
-  --beast-magenta: #E11D48;
-  --beast-emerald: #059669;
-  --beast-blue: #2563EB;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-glow: rgba(0, 153, 255, 0.3);
+  --beast-blue: #00B8D9;
+  --beast-pink: #E91E63;
+  --border-subtle: rgba(0, 0, 0, 0.08);
 }
 
 html {
   scroll-behavior: auto;
   font-family: var(--font-sans);
   background-color: var(--bg-obsidian);
-  color: var(--text-primary);
+  color: #FFFFFF;
 }
 
 body {
@@ -54,101 +38,57 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-color: var(--bg-obsidian);
-  color: var(--text-primary);
+  color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Tabular numerals for jitter-free counters */
+/* Jitter-free numeric readouts */
 .tabular-nums {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 
-/* Sleek Liquid Glassmorphic Card */
-.glass-card {
-  background: var(--bg-glass-card);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1.25rem;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+/* Luxury Editorial Glass Panel */
+.glass-panel {
+  background: rgba(12, 15, 23, 0.65);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-card:hover {
-  border-color: rgba(0, 245, 255, 0.4);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 50px -10px rgba(0, 245, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+.glass-panel:hover {
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 25px 60px -15px rgba(0, 229, 255, 0.12);
 }
 
-/* Pill Button */
-.btn-pill {
+/* Minimal Luxury Pill */
+.luxury-pill {
   border-radius: 9999px;
-  font-family: var(--font-sans);
   font-weight: 700;
   letter-spacing: -0.01em;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-pill:hover {
+.luxury-pill:hover {
   transform: translateY(-2px) scale(1.02);
 }
 
-/* Ambient Radial Glows */
-.aurora-cyan {
-  background: radial-gradient(circle, rgba(0, 245, 255, 0.15) 0%, transparent 70%);
-}
-
-.aurora-gold {
-  background: radial-gradient(circle, rgba(255, 208, 0, 0.12) 0%, transparent 70%);
-}
-
-.aurora-magenta {
-  background: radial-gradient(circle, rgba(255, 30, 102, 0.12) 0%, transparent 70%);
-}
-
-/* Border Gradient Beam */
-@keyframes border-beam {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.glow-gradient-border {
-  position: relative;
-  border-radius: 1.5rem;
-  background: linear-gradient(60deg, #00f5ff, #ffd000, #ff1e66, #00f076);
-  background-size: 300% 300%;
-  animation: border-beam 8s ease infinite;
-  padding: 1px;
-}
-
-.glow-gradient-content {
-  background: var(--bg-surface);
-  border-radius: calc(1.5rem - 1px);
-}
-
-/* Custom Scrollbar */
+/* Custom Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-obsidian);
+  background: #06080C;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--beast-cyan);
+  background: var(--beast-blue);
 }
 
 /* Lenis smooth scroll */
@@ -157,9 +97,6 @@ html.lenis, html.lenis body {
 }
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
 }
 
 @media (prefers-reduced-motion: reduce) {

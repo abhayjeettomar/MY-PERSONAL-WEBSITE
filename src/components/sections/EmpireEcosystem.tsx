@@ -4,12 +4,10 @@ import { MRBEAST_DATA, BusinessEntity } from '@/data/mrbeastData';
 
 interface EmpireEcosystemProps {
   playClick?: () => void;
-  playCash?: () => void;
 }
 
 export const EmpireEcosystem: React.FC<EmpireEcosystemProps> = ({
   playClick,
-  playCash,
 }) => {
   const [activeTabId, setActiveTabId] = useState<string>('holding');
 
@@ -71,7 +69,6 @@ export const EmpireEcosystem: React.FC<EmpireEcosystemProps> = ({
                 key={entity.id}
                 onClick={() => {
                   playClick?.();
-                  playCash?.();
                   setActiveTabId(entity.id);
                 }}
                 className={`p-5 rounded-2xl text-left transition-all border cursor-pointer ${
