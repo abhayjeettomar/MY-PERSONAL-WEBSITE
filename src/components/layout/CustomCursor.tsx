@@ -69,7 +69,7 @@ export const CustomCursor: React.FC = () => {
     <div className="pointer-events-none fixed inset-0 z-[10000] overflow-hidden hidden md:block">
       {/* Center Precision Glow Dot */}
       <div
-        className="fixed w-2.5 h-2.5 rounded-full bg-[#00F5FF] -translate-x-1/2 -translate-y-1/2 shadow-[0_0_12px_#00F5FF] transition-opacity duration-150"
+        className="fixed w-2.5 h-2.5 rounded-full bg-[#00E5FF] -translate-x-1/2 -translate-y-1/2 shadow-[0_0_12px_#00E5FF] transition-opacity duration-150"
         style={{
           left: `${coords.x}px`,
           top: `${coords.y}px`,
@@ -87,18 +87,18 @@ export const CustomCursor: React.FC = () => {
         )}
 
         {cursorMode === 'button' && (
-          <div className="w-12 h-12 rounded-full border border-[#00F5FF]/50 bg-[#00F5FF]/10 backdrop-blur-sm scale-110 shadow-[0_0_20px_rgba(0,245,255,0.2)]" />
+          <div className="w-12 h-12 rounded-full border border-[#00E5FF]/60 bg-[#00E5FF]/15 backdrop-blur-sm scale-110 shadow-[0_0_20px_rgba(0,229,255,0.3)]" />
         )}
 
         {cursorMode === 'video' && (
-          <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#FFD000] to-[#FF9900] text-[#07080C] font-display font-black text-xs tracking-wider flex items-center justify-center shadow-[0_0_40px_rgba(255,208,0,0.6)] animate-pulse">
+          <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#00E5FF] to-[#FF1E66] text-[#06080C] font-display font-black text-xs tracking-wider flex items-center justify-center shadow-[0_0_40px_rgba(0,229,255,0.7)] animate-pulse">
             PLAY ▶
           </div>
         )}
 
         {cursorMode === 'drag' && (
           <div className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-mono text-[10px] tracking-widest uppercase">
-            DRAG ↔
+            DRAG
           </div>
         )}
       </div>

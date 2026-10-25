@@ -40,13 +40,13 @@ export const VideoTheatreModal: React.FC<VideoTheatreModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-5xl rounded-3xl bg-[#0B0E14] border border-white/15 shadow-[0_25px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col max-h-[92vh]"
+        className="relative w-full max-w-5xl rounded-3xl bg-[#06080C] border border-white/15 shadow-[0_25px_80px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Control Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/[0.02]">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#00F5FF] animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#00E5FF] animate-pulse" />
             <span className="text-xs font-bold text-white tracking-wider uppercase font-mono">
               OFFICIAL BROADCAST // {video.category}
             </span>
@@ -57,7 +57,7 @@ export const VideoTheatreModal: React.FC<VideoTheatreModalProps> = ({
               href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-[#FFD000] transition-colors"
+              className="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-[#00E5FF] transition-colors"
             >
               <span>OPEN ON YOUTUBE</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -87,10 +87,10 @@ export const VideoTheatreModal: React.FC<VideoTheatreModalProps> = ({
         </div>
 
         {/* Production Telemetry Log Footer */}
-        <div className="p-6 overflow-y-auto bg-black/40 border-t border-white/10 space-y-4">
+        <div className="p-6 overflow-y-auto bg-black/50 border-t border-white/10 space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
             <div className="max-w-2xl">
-              <h2 id="theatre-title" className="font-display font-extrabold text-2xl sm:text-3xl text-white uppercase tracking-tight">
+              <h2 id="theatre-title" className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight">
                 {video.title}
               </h2>
               <p className="mt-2 text-slate-300 text-sm sm:text-base leading-relaxed">
@@ -101,31 +101,31 @@ export const VideoTheatreModal: React.FC<VideoTheatreModalProps> = ({
             {/* Badges Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 min-w-[280px]">
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="flex items-center gap-1.5 text-[#FFD000] text-[11px] font-bold uppercase">
+                <div className="flex items-center gap-1.5 text-[#00E5FF] text-[11px] font-bold uppercase font-mono">
                   <Film className="w-3.5 h-3.5" />
                   <span>VIEWS</span>
                 </div>
-                <div className="font-display font-bold text-sm text-white mt-1">
+                <div className="font-display font-black text-sm text-white mt-1">
                   {video.views}
                 </div>
               </div>
 
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="flex items-center gap-1.5 text-[#00F5FF] text-[11px] font-bold uppercase">
+                <div className="flex items-center gap-1.5 text-[#FF1E66] text-[11px] font-bold uppercase font-mono">
                   <Award className="w-3.5 h-3.5" />
                   <span>BUDGET</span>
                 </div>
-                <div className="font-display font-bold text-xs text-white mt-1 truncate">
+                <div className="font-display font-black text-xs text-white mt-1 truncate">
                   {video.budgetOrStakes}
                 </div>
               </div>
 
               <div className="p-3 rounded-xl bg-white/5 border border-white/10 col-span-2 sm:col-span-1">
-                <div className="flex items-center gap-1.5 text-[#FF1E66] text-[11px] font-bold uppercase">
+                <div className="flex items-center gap-1.5 text-[#00F076] text-[11px] font-bold uppercase font-mono">
                   <Users className="w-3.5 h-3.5" />
                   <span>SCALE</span>
                 </div>
-                <div className="font-display font-bold text-xs text-white mt-1 truncate">
+                <div className="font-display font-black text-xs text-white mt-1 truncate">
                   {video.contestantsOrParticipants}
                 </div>
               </div>

@@ -2,8 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Preloader } from '@/components/layout/Preloader';
 import { BroadcastHUD } from '@/components/layout/BroadcastHUD';
 import { CustomCursor } from '@/components/layout/CustomCursor';
-import { BeastAttentionEngine } from '@/components/three/BeastAttentionEngine';
-import { HeroArena } from '@/components/sections/HeroArena';
+import { ScrollyHeroStage } from '@/components/scrolly/ScrollyHeroStage';
 import { OriginStory } from '@/components/sections/OriginStory';
 import { MilestoneTimeline } from '@/components/sections/MilestoneTimeline';
 import { ProductionVault } from '@/components/sections/ProductionVault';
@@ -30,7 +29,7 @@ export function App() {
   const { playClick, playHover, playBreach, playMilestone } = useSoundFX(sfxEnabled);
   const { scrollProgress, scrollTo } = useSmoothScroll(!reducedMotion && preloaderComplete);
 
-  // Smooth Intersection Observer for Chapter detection
+  // Smooth Intersection Observer for Chapter detection in BroadcastHUD
   useEffect(() => {
     if (!preloaderComplete) return;
 
@@ -56,7 +55,7 @@ export function App() {
           }
         });
       },
-      { threshold: 0.35 }
+      { threshold: 0.25 }
     );
 
     sectionMap.forEach((s) => {
@@ -76,7 +75,7 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#06080C] text-white selection:bg-[#00E5FF] selection:text-[#06080C] relative">
-      {/* Preloader Countdown (Runs once per session unless skipped) */}
+      {/* Preloader Countdown */}
       {!preloaderComplete && (
         <Preloader
           onComplete={() => setPreloaderComplete(true)}
@@ -86,13 +85,10 @@ export function App() {
         />
       )}
 
-      {/* Persistent 3D Deconstructible Beast Attention Engine */}
-      <BeastAttentionEngine scrollProgress={scrollProgress} reducedMotion={reducedMotion} />
-
       {/* Custom Context-Aware Desktop Reticle Cursor */}
       <CustomCursor />
 
-      {/* Floating Island HUD */}
+      {/* Floating Glass Island Broadcast HUD */}
       <BroadcastHUD
         currentLevel={currentLevel}
         currentLevelName={currentLevelName}
@@ -106,32 +102,31 @@ export function App() {
 
       {/* Main Single-Page Journey */}
       <main className="relative z-10">
-        {/* Act 01: Hero Arena */}
-        <HeroArena
-          onEnterVault={() => handleNavigate('#origin')}
+        {/* Act 01: Pinned 3D Deconstructible Attention Calibre (5-Act Scrollytelling Centerpiece) */}
+        <ScrollyHeroStage
           onPlayShowreel={(v) => setActiveVideo(v)}
           playClick={playClick}
         />
 
-        {/* Act 02: Origin Story (2012-2017) */}
+        {/* Act 02: Origin Story (2012-2017 & Reverse-Engineering Mastermind) */}
         <OriginStory playClick={playClick} />
 
-        {/* Act 03: Milestone Timeline (2012-2026) */}
+        {/* Act 03: Milestone Timeline (2012-2026 Flight Recorder) */}
         <MilestoneTimeline playClick={playClick} playMilestone={playMilestone} />
 
-        {/* Act 04: Production Vault & Guinness Records */}
+        {/* Act 04: Production Vault & 44 Guinness Records */}
         <ProductionVault
           onSelectVideo={(v) => setActiveVideo(v)}
           playClick={playClick}
         />
 
-        {/* Act 05: Beast Industries Ecosystem */}
+        {/* Act 05: Beast Industries Ecosystem ($5B Corporate Profile) */}
         <EmpireEcosystem playClick={playClick} />
 
-        {/* Act 06: Philanthropy & World Impact */}
+        {/* Act 06: Philanthropy & Global Aid (100 Wells, Sight Restoration, TeamTrees) */}
         <PhilanthropyImpact playClick={playClick} />
 
-        {/* Act 07: Telemetry Simulator */}
+        {/* Act 07: Telemetry Simulator (Attention Reactor & Physical Scale) */}
         <TelemetrySimulator
           onOpenSources={() => setSourcesModalOpen(true)}
           playClick={playClick}

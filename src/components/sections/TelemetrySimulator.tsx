@@ -22,19 +22,19 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
       num: '523,000,000+',
       label: 'Main Channel Subscribers',
       sub: '#1 Channel on Earth (Crossed 500M on June 12, 2026)',
-      accent: 'text-[#00F5FF]',
+      accent: 'text-[#00E5FF]',
     },
     {
       num: '144.2B+',
       label: 'Main Channel Views',
       sub: '177B+ Across Combined Network Channels',
-      accent: 'text-[#FFD000]',
+      accent: 'text-white',
     },
     {
       num: '141,200,000',
       label: 'Average Views Per Upload',
       sub: 'Exceeds Standard US Television Primetime 12x',
-      accent: 'text-white',
+      accent: 'text-[#FF1E66]',
     },
     {
       num: '$5,000,000,000',
@@ -46,13 +46,13 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
       num: '44',
       label: 'Guinness World Records Broken',
       sub: 'Adjudicated on Amazon Prime Video Beast Games',
-      accent: 'text-[#FFD000]',
+      accent: 'text-[#00E5FF]',
     },
     {
       num: '34,000,000+ LBS',
       label: 'Ocean Waste Cleared (#TeamSeas)',
       sub: 'Plus 25,000,000+ Trees Planted (#TeamTrees)',
-      accent: 'text-[#00F5FF]',
+      accent: 'text-[#00F076]',
     },
   ];
 
@@ -65,19 +65,19 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
   return (
     <section
       id="telemetry"
-      className="relative py-28 sm:py-36 bg-[#050608] border-b border-white/10"
+      className="relative py-28 sm:py-36 bg-[#06080C] border-b border-white/10"
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00F5FF]/10 border border-[#00F5FF]/20 text-xs font-bold text-[#00F5FF] uppercase tracking-wider mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20 text-xs font-bold text-[#00E5FF] uppercase tracking-wider mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-[#FF1E66]" />
               <span>VERIFIED TELEMETRY DECK</span>
             </div>
-            <h2 className="font-display font-extrabold text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-tight uppercase text-white">
+            <h2 className="font-display font-black text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.92] tracking-tight uppercase text-white">
               BY THE <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F5FF] via-[#FFD000] to-[#FF1E66]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] via-white to-[#FF1E66]">
                 NUMBERS.
               </span>
             </h2>
@@ -88,9 +88,9 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
               playClick?.();
               onOpenSources();
             }}
-            className="btn-pill px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:border-[#FFD000] text-slate-300 hover:text-[#FFD000] text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer"
+            className="luxury-pill px-6 py-3 bg-white/5 border border-white/10 hover:border-[#00E5FF] text-slate-300 hover:text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer"
           >
-            <Database className="w-4 h-4" />
+            <Database className="w-4 h-4 text-[#00E5FF]" />
             <span>AUDIT SOURCES [OCT 2026]</span>
           </button>
         </div>
@@ -100,11 +100,11 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
           {counters.map((c, idx) => (
             <div
               key={idx}
-              className="glass-card p-8 flex flex-col justify-between group"
+              className="glass-panel p-8 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1"
             >
               <div>
                 <span className="text-xs font-mono text-slate-400 font-semibold uppercase">
-                  VERIFIED STAT #{idx + 1}
+                  VERIFIED METRIC #{idx + 1}
                 </span>
 
                 <div
@@ -123,31 +123,31 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
               </div>
 
               <div className="mt-8 pt-4 border-t border-white/10 text-xs font-mono text-slate-400">
-                OCTOBER 2026 TELEMETRY
+                OCTOBER 2026 AUDITED
               </div>
             </div>
           ))}
         </div>
 
-        {/* Crazy Feature #1: "The Attention Reactor" Subscriber Accelerator */}
-        <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#00F5FF]/10 via-black to-[#FFD000]/10 border border-white/15 relative overflow-hidden shadow-2xl">
+        {/* The Attention Reactor Subscriber Accelerator */}
+        <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#00E5FF]/10 via-black to-[#FF1E66]/10 border border-white/15 relative overflow-hidden shadow-2xl">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00F5FF]/20 text-xs font-bold text-[#00F5FF] uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00E5FF]/20 text-xs font-bold text-[#00E5FF] uppercase font-mono">
                 <Sliders className="w-4 h-4" />
                 <span>INTERACTIVE ATTENTION REACTOR</span>
               </div>
-              <h3 className="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase tracking-tight mt-2">
+              <h3 className="font-display font-black text-3xl sm:text-4xl text-white uppercase tracking-tight mt-2">
                 DRAG TO ACCELERATE AUDIENCE SCALE.
               </h3>
               <p className="mt-1 text-slate-300 text-sm">
-                Slide through 14 years of growth. When you hit 523M, watch the cash cannon fire!
+                Slide through 14 years of exponential growth from Greenville bedroom to global streaming records.
               </p>
             </div>
 
             <div className="text-right">
-              <span className="text-xs text-slate-400 font-bold uppercase">Simulated Subscribers</span>
-              <div className="font-display font-black text-4xl sm:text-5xl text-[#00F5FF] tabular-nums">
+              <span className="text-xs text-slate-400 font-mono uppercase">Simulated Subscribers</span>
+              <div className="font-display font-black text-4xl sm:text-5xl text-[#00E5FF] tabular-nums">
                 {simulatedSubs}M
               </div>
             </div>
@@ -160,23 +160,23 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
               max="523"
               value={simulatedSubs}
               onChange={handleSliderChange}
-              className="w-full h-3 bg-white/10 rounded-full appearance-none cursor-pointer accent-[#FFD000]"
+              className="w-full h-3 bg-white/10 rounded-full appearance-none cursor-pointer accent-[#00E5FF]"
             />
             <div className="flex justify-between text-xs font-mono text-slate-400">
               <span>1 SUBS (2012)</span>
               <span>100K (2017)</span>
               <span>100M (2022)</span>
               <span>300M (2024)</span>
-              <span className="text-[#FFD000] font-bold">523M PEAK (2026)</span>
+              <span className="text-[#00E5FF] font-bold">523M PEAK (2026)</span>
             </div>
           </div>
 
-          <div className="mt-6 p-4 rounded-2xl bg-black/50 border border-white/10 flex items-center justify-between text-xs">
+          <div className="mt-6 p-4 rounded-2xl bg-black/60 border border-white/10 flex items-center justify-between text-xs font-mono">
             <div className="flex items-center gap-2 text-white font-medium">
-              <Flame className="w-4 h-4 text-[#FFD000]" />
+              <Flame className="w-4 h-4 text-[#FF1E66]" />
               <span>
                 {simulatedSubs < 50
-                  ? 'Phase 1: The Greenville Bedroom Experiment'
+                  ? 'Phase 1: The Greenville Bedroom Let\'s Play Era'
                   : simulatedSubs < 200
                   ? 'Phase 2: Viral Philanthropy & Real-Life Squid Game'
                   : simulatedSubs < 450
@@ -191,14 +191,14 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
         </div>
 
         {/* Physical Scale Comparator */}
-        <div className="mt-14 glass-card p-8 sm:p-12">
+        <div className="mt-14 glass-panel p-8 sm:p-12">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold text-[#FFD000] uppercase tracking-wider">
-                <Scale className="w-4 h-4" />
+              <div className="flex items-center gap-2 text-xs font-bold text-[#00E5FF] uppercase tracking-wider font-mono">
+                <Scale className="w-4 h-4 text-[#FF1E66]" />
                 <span>PHYSICAL SCALE BENCHMARK</span>
               </div>
-              <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-white uppercase tracking-tight mt-1">
+              <h3 className="font-display font-black text-2xl sm:text-4xl text-white uppercase tracking-tight mt-1">
                 COMPREHENDING IMPOSSIBLE NUMBERS.
               </h3>
             </div>
@@ -215,7 +215,7 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
                     }}
                     className={`px-4 py-2 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-gradient-to-r from-[#FFD000] to-[#FF9900] text-[#07080C] shadow-[0_0_20px_rgba(255,208,0,0.4)]'
+                        ? 'bg-gradient-to-r from-[#00E5FF] to-[#00B4D8] text-[#06080C] shadow-[0_0_20px_rgba(0,229,255,0.4)]'
                         : 'bg-white/5 text-slate-300 hover:text-white border border-white/10'
                     }`}
                   >
@@ -227,11 +227,11 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
           </div>
 
           <div className="mt-8 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sm font-bold">
-              <span className="text-[#00F5FF] uppercase">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sm font-bold font-mono">
+              <span className="text-[#00E5FF] uppercase">
                 {currentComparison.comparisonLabel}
               </span>
-              <span className="text-[#FFD000]">
+              <span className="text-[#FF1E66]">
                 RATIO: {currentComparison.ratio}x BENCHMARK
               </span>
             </div>
@@ -240,10 +240,10 @@ export const TelemetrySimulator: React.FC<TelemetrySimulatorProps> = ({
               <div>
                 <div className="flex justify-between text-xs font-semibold mb-2">
                   <span className="text-white">MRBEAST METRIC:</span>
-                  <span className="text-[#00F5FF] font-bold">{currentComparison.mrbeastStat}</span>
+                  <span className="text-[#00E5FF] font-bold">{currentComparison.mrbeastStat}</span>
                 </div>
                 <div className="h-4 w-full rounded-full bg-white/10 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-[#00F5FF] via-[#FFD000] to-[#FF1E66] rounded-full w-full" />
+                  <div className="h-full bg-gradient-to-r from-[#00E5FF] via-white to-[#FF1E66] rounded-full w-full" />
                 </div>
               </div>
 

@@ -16,14 +16,14 @@ const OFFICIAL_LINKS = [
 
 export const Footer: React.FC<FooterProps> = ({ onScrollToTop, playClick }) => {
   return (
-    <footer className="relative bg-[#050608] border-t border-white/10 pt-24 pb-12 overflow-hidden select-none">
+    <footer className="relative bg-[#06080C] border-t border-white/10 pt-24 pb-12 overflow-hidden select-none">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12 pb-16 border-b border-white/10">
           <div className="max-w-xl space-y-4">
-            <span className="text-xs font-mono font-bold text-[#FFD000] uppercase tracking-wider">
+            <span className="text-xs font-mono font-bold text-[#00E5FF] uppercase tracking-wider">
               OFFICIAL VERIFIED ECOSYSTEM
             </span>
-            <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-white uppercase tracking-tight">
+            <h3 className="font-display font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">
               CONNECT WITH THE EMPIRE.
             </h3>
             <p className="text-slate-300 text-base leading-relaxed">
@@ -40,17 +40,17 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToTop, playClick }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClick?.()}
-                className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00F5FF]/60 hover:bg-white/[0.08] text-white transition-all flex items-center justify-between group cursor-pointer"
+                className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00E5FF]/60 hover:bg-white/[0.08] text-white transition-all flex items-center justify-between group cursor-pointer"
               >
                 <div>
-                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider font-mono">
                     {link.category}
                   </div>
                   <div className="font-display font-bold text-sm mt-0.5">
                     {link.name}
                   </div>
                 </div>
-                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-[#00F5FF] transition-colors" />
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-[#00E5FF] transition-colors" />
               </a>
             ))}
 
@@ -59,17 +59,17 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToTop, playClick }) => {
                 playClick?.();
                 onScrollToTop();
               }}
-              className="p-4 rounded-2xl bg-gradient-to-r from-[#FFD000] to-[#FF9900] text-[#07080C] font-display font-extrabold text-sm uppercase flex items-center justify-between transition-all hover:scale-[1.02] cursor-pointer shadow-lg"
+              className="p-4 rounded-2xl bg-gradient-to-r from-[#00E5FF] to-[#00B4D8] text-[#06080C] font-display font-black text-sm uppercase flex items-center justify-between transition-all hover:scale-[1.02] cursor-pointer shadow-lg"
             >
               <span>RETURN TO TOP</span>
-              <ArrowUp className="w-4 h-4" />
+              <ArrowUp className="w-4 h-4 stroke-[3]" />
             </button>
           </div>
         </div>
 
         {/* Colossal Kinetic MRBEAST Typography */}
         <div className="py-16 sm:py-24 text-center overflow-hidden">
-          <div className="font-display font-black text-[clamp(4.5rem,18vw,19rem)] leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 via-white/05 to-transparent hover:from-[#00F5FF]/40 hover:to-[#FFD000]/30 transition-all duration-700 uppercase select-none">
+          <div className="font-display font-black text-[clamp(4.5rem,18vw,19rem)] leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 via-white/05 to-transparent hover:from-[#00E5FF]/40 hover:to-[#FF1E66]/40 transition-all duration-700 uppercase select-none">
             MRBEAST
           </div>
         </div>
@@ -77,8 +77,8 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToTop, playClick }) => {
         {/* Tribute Disclaimer */}
         <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
           <div className="flex items-start gap-3">
-            <ShieldCheck className="w-5 h-5 text-[#00F5FF] flex-shrink-0 mt-0.5" />
-            <div className="space-y-1 text-xs text-slate-400 leading-relaxed">
+            <ShieldCheck className="w-5 h-5 text-[#00E5FF] flex-shrink-0 mt-0.5" />
+            <div className="space-y-1 text-xs text-slate-400 leading-relaxed font-mono">
               <strong className="text-white font-bold uppercase tracking-wide block">
                 UNOFFICIAL CREATIVE TRIBUTE:
               </strong>
@@ -90,7 +90,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToTop, playClick }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-slate-500 border-t border-white/10 pt-6">
+        <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-slate-500 border-t border-white/10 pt-6 font-mono">
           <div className="flex items-center gap-1.5">
             <span>Crafted with</span>
             <Heart className="w-3.5 h-3.5 text-[#FF1E66] fill-[#FF1E66]" />
@@ -98,7 +98,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToTop, playClick }) => {
           </div>
           <div className="flex items-center gap-4">
             <span>GREENVILLE, NC // GLOBAL REACH</span>
-            <span>OCTOBER 2026 ARCHIVE</span>
+            <span>OCTOBER 2026</span>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowUpRight, Clock, Award, TrendingUp } from 'lucide-react';
+import { Sparkles, ArrowUpRight, TrendingUp } from 'lucide-react';
 import { MRBEAST_DATA } from '@/data/mrbeastData';
 
 interface OriginStoryProps {
@@ -30,49 +30,69 @@ export const OriginStory: React.FC<OriginStoryProps> = ({ playClick }) => {
   return (
     <section
       id="origin"
-      className="relative py-28 sm:py-36 bg-[#050608] border-b border-white/10 overflow-hidden"
+      className="relative py-28 sm:py-36 bg-[#06080C] border-b border-white/10 overflow-hidden"
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Header */}
         <div className="mb-20 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00F5FF]/10 border border-[#00F5FF]/20 text-xs font-bold text-[#00F5FF] uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20 text-xs font-bold text-[#00E5FF] uppercase tracking-wider mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-[#FF1E66]" />
             <span>ORIGIN STORY (2012–2017)</span>
           </div>
-          <h2 className="font-display font-extrabold text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-tight uppercase text-white">
+          <h2 className="font-display font-black text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.92] tracking-tight uppercase text-white">
             FIVE YEARS OF <br />
             <span className="text-slate-500">NOBODY WATCHING.</span>
           </h2>
           <p className="mt-4 text-slate-300 text-lg leading-relaxed">
-            Before breaking every global record on streaming television, Jimmy Donaldson spent half a decade posting into the void, reverse-engineering retention curves, and establishing the most aggressive reinvestment model in media.
+            Before breaking every global record on streaming television, Jimmy Donaldson spent half a decade posting into the void, reverse-engineering retention curves, and establishing the most aggressive reinvestment model in media history.
           </p>
         </div>
 
         {/* 12-Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Sticky Left Interactive Visualizer (Cols 1-5) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28">
-            <div className="glass-card p-6 sm:p-8 space-y-6">
+          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+            {/* Jimmy Donaldson Archival Portrait Card */}
+            <div className="glass-panel p-6 flex items-center gap-5">
+              <div className="w-16 h-16 rounded-2xl overflow-hidden p-[1.5px] bg-gradient-to-tr from-[#00E5FF] to-[#FF1E66] flex-shrink-0 shadow-lg">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Jimmy_Donaldson_2021.jpg/800px-Jimmy_Donaldson_2021.jpg"
+                  alt="Jimmy Donaldson"
+                  className="w-full h-full object-cover object-top rounded-2xl"
+                />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono text-[#00E5FF] font-bold uppercase tracking-wider">
+                  ARCHIVAL PROFILE // GREENVILLE, NC
+                </span>
+                <div className="font-display font-bold text-lg text-white">Jimmy Donaldson</div>
+                <p className="text-xs text-slate-400 mt-0.5 leading-tight">
+                  &quot;I spent 1,000 consecutive days analyzing YouTube thumbnails before 100,000 subscribers.&quot;
+                </p>
+              </div>
+            </div>
+
+            <div className="glass-panel p-6 sm:p-8 space-y-6">
               <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                <span className="text-xs font-extrabold text-[#FFD000] uppercase tracking-wider flex items-center gap-1.5">
-                  <TrendingUp className="w-4 h-4 text-[#FFD000]" />
+                <span className="text-xs font-extrabold text-[#00E5FF] uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                  <TrendingUp className="w-4 h-4 text-[#FF1E66]" />
                   RETENTION &amp; SCALE GRAPH
                 </span>
                 <span className="text-xs text-slate-400 font-mono">2012 &rarr; 2026</span>
               </div>
 
               {/* Dynamic Glowing SVG Curve */}
-              <div className="h-52 w-full rounded-2xl bg-black/50 border border-white/10 p-5 flex flex-col justify-between relative overflow-hidden">
-                <div className="flex justify-between text-xs font-semibold text-slate-400">
+              <div className="h-52 w-full rounded-2xl bg-black/60 border border-white/10 p-5 flex flex-col justify-between relative overflow-hidden">
+                <div className="flex justify-between text-xs font-semibold text-slate-400 font-mono">
                   <span>SCALE FACTOR</span>
-                  <span className="text-[#00F5FF]">{currentCurve.label}</span>
+                  <span className="text-[#00E5FF] font-bold">{currentCurve.label}</span>
                 </div>
 
                 <svg viewBox="0 0 300 120" className="w-full h-28 overflow-visible">
                   <defs>
                     <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00F5FF" />
-                      <stop offset="70%" stopColor="#FFD000" />
+                      <stop offset="0%" stopColor="#00E5FF" />
+                      <stop offset="70%" stopColor="#FFFFFF" />
                       <stop offset="100%" stopColor="#FF1E66" />
                     </linearGradient>
                   </defs>
@@ -96,28 +116,28 @@ export const OriginStory: React.FC<OriginStoryProps> = ({ playClick }) => {
                     cx="290"
                     cy={110 - currentCurve.spike}
                     r="6"
-                    fill="#FFD000"
+                    fill="#FF1E66"
                     className="animate-ping"
                   />
                   <circle
                     cx="290"
                     cy={110 - currentCurve.spike}
                     r="4.5"
-                    fill="#FFD000"
+                    fill="#FF1E66"
                   />
                 </svg>
 
                 <div className="flex justify-between text-[11px] font-mono text-slate-400 pt-2 border-t border-white/10">
                   <span>2012 (BEDROOM)</span>
                   <span>2017 (100K)</span>
-                  <span className="text-[#FFD000] font-bold">2026 (523M)</span>
+                  <span className="text-[#00E5FF] font-bold">2026 (523M)</span>
                 </div>
               </div>
 
               {/* Dynamic Budget Metric */}
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-xs text-slate-400 font-medium">PRODUCTION BUDGET SCALING</span>
-                <div className="font-display font-extrabold text-2xl text-white mt-1">
+                <span className="text-xs text-slate-400 font-mono">PRODUCTION REINVESTMENT RATE</span>
+                <div className="font-display font-black text-2xl text-white mt-1">
                   {currentCurve.budget}
                 </div>
                 <p className="text-xs text-slate-400 mt-1 leading-relaxed">
@@ -136,7 +156,7 @@ export const OriginStory: React.FC<OriginStoryProps> = ({ playClick }) => {
                     }}
                     className={`h-2 flex-1 rounded-full transition-all cursor-pointer ${
                       activeChapterIndex === idx
-                        ? 'bg-[#FFD000] shadow-[0_0_12px_#FFD000]'
+                        ? 'bg-[#00E5FF] shadow-[0_0_12px_#00E5FF]'
                         : 'bg-white/10 hover:bg-white/30'
                     }`}
                     aria-label={`Step ${idx + 1}`}
@@ -154,33 +174,33 @@ export const OriginStory: React.FC<OriginStoryProps> = ({ playClick }) => {
                 <div
                   key={chapter.step}
                   onMouseEnter={() => setActiveChapterIndex(idx)}
-                  className={`glass-card p-6 sm:p-8 cursor-pointer relative ${
+                  className={`glass-panel p-6 sm:p-8 cursor-pointer relative transition-all duration-300 ${
                     isSelected
-                      ? 'border-[#00F5FF]/60 shadow-[0_10px_40px_rgba(0,245,255,0.15)] bg-white/[0.06]'
+                      ? 'border-[#00E5FF]/60 shadow-[0_10px_40px_rgba(0,229,255,0.15)] bg-white/[0.06] -translate-y-1'
                       : 'border-white/10 hover:border-white/20'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-bold text-[#00F5FF]">
+                        <span className="text-xs font-mono font-bold text-[#00E5FF]">
                           PHASE {chapter.step}
                         </span>
                         <span className="text-xs text-slate-400 font-medium">
                           // {chapter.year}
                         </span>
                       </div>
-                      <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-white uppercase tracking-tight mt-1">
+                      <h3 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight mt-1">
                         {chapter.title}
                       </h3>
                     </div>
 
                     <span className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300">
-                      <ArrowUpRight className="w-4 h-4" />
+                      <ArrowUpRight className="w-4 h-4 text-[#00E5FF]" />
                     </span>
                   </div>
 
-                  <div className="mt-2 text-sm font-semibold text-[#FFD000]">
+                  <div className="mt-2 text-sm font-semibold text-[#FF1E66]">
                     {chapter.subtitle}
                   </div>
 
@@ -190,7 +210,7 @@ export const OriginStory: React.FC<OriginStoryProps> = ({ playClick }) => {
 
                   <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
                     <span className="text-white font-bold">{chapter.metric}</span>
-                    <span className="text-[#00F5FF] font-semibold">VERIFIED MILESTONE</span>
+                    <span className="text-[#00E5FF] font-semibold">VERIFIED MILESTONE</span>
                   </div>
                 </div>
               );

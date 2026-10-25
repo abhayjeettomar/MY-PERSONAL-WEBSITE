@@ -110,17 +110,17 @@ export const Preloader: React.FC<PreloaderProps> = ({
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-[#050608] select-none pointer-events-auto"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-[#06080C] select-none pointer-events-auto"
     >
       {/* Ambient background glows */}
-      <div className="absolute w-[600px] h-[600px] rounded-full bg-[#00F5FF]/10 blur-[140px] pointer-events-none" />
-      <div className="absolute w-[500px] h-[500px] rounded-full bg-[#FFD000]/10 blur-[130px] translate-y-32 pointer-events-none" />
+      <div className="absolute w-[600px] h-[600px] rounded-full bg-[#00E5FF]/10 blur-[150px] pointer-events-none" />
+      <div className="absolute w-[500px] h-[500px] rounded-full bg-[#FF1E66]/10 blur-[150px] translate-y-32 pointer-events-none" />
 
       {/* Top Controls */}
       <div className="absolute top-8 left-8 right-8 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#00F5FF] animate-ping" />
-          <span className="text-xs font-mono tracking-widest text-[#00F5FF] uppercase font-bold">
+        <div className="flex items-center gap-2.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#00E5FF] animate-ping" />
+          <span className="text-xs font-mono tracking-widest text-[#00E5FF] uppercase font-bold">
             MRBEAST ARCHIVE
           </span>
         </div>
@@ -129,26 +129,26 @@ export const Preloader: React.FC<PreloaderProps> = ({
           onClick={completeSequence}
           className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-all text-xs font-mono tracking-wider uppercase cursor-pointer"
         >
-          <span>SKIP</span>
+          <span>SKIP INTRO</span>
           <FastForward className="w-3.5 h-3.5" />
         </button>
       </div>
 
       {/* Center Cinematic Counter */}
       <div ref={numberRef} className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-5xl">
-        <div className="flex items-center gap-2 text-xs font-mono tracking-[0.3em] text-[#FFD000] uppercase mb-4">
-          <Sparkles className="w-3.5 h-3.5" />
+        <div className="flex items-center gap-2 text-xs font-mono tracking-[0.3em] text-[#00E5FF] uppercase mb-4">
+          <Sparkles className="w-3.5 h-3.5 text-[#FF1E66]" />
           <span>ATTENTION CURVE ACCELERATION</span>
         </div>
 
-        <div className="font-display font-extrabold text-5xl sm:text-7xl md:text-9xl tracking-tighter text-white tabular-nums drop-shadow-[0_0_60px_rgba(0,245,255,0.3)]">
+        <div className="font-display font-black text-5xl sm:text-7xl md:text-9xl tracking-tighter text-white tabular-nums drop-shadow-[0_0_60px_rgba(0,229,255,0.35)]">
           {count.toLocaleString('en-US')}
         </div>
 
         <div className="mt-8 flex flex-col items-center gap-3 w-full max-w-md">
           <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden backdrop-blur-md">
             <div
-              className="h-full bg-gradient-to-r from-[#00F5FF] via-[#FFD000] to-[#FF1E66] transition-all duration-75 rounded-full"
+              className="h-full bg-gradient-to-r from-[#00E5FF] via-white to-[#FF1E66] transition-all duration-75 rounded-full"
               style={{ width: `${Math.min(100, (count / 500000000) * 100)}%` }}
             />
           </div>
